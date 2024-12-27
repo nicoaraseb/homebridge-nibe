@@ -234,7 +234,6 @@ export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
         },
         params,
       });
-    this.log.debug('token:' + this.getSession('access_token'));
       if(this.options.showApiResponse) {
         this.log.info('Nibe data from '+url+': ' +JSON.stringify(data));
       }
@@ -314,6 +313,7 @@ export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
   private isTokenExpired(): boolean {
     const expired = (Number(this.getSession('expires_at')) || 0) < Date.now() + consts.renewBeforeExpiry;
     this.log.debug('Is token expired: ' + expired);
+    this.log.debug('token:' + this.getSession('access_token'));
     return expired;
   }
 
