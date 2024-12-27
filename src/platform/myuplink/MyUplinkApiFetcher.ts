@@ -36,8 +36,8 @@ const consts = {
 //   temp interior : BT50 : 50660
 //   more hot water : 7086
 //   target interior temp : 47751
-//   allowedParameters: [4,8,10,11,13,14,54,7086,47751,50660],
-        allowedParameters: ['sh-hwBoost', 'sh-hwTemp'],
+  allowedParameters: [4,8,10,11,12,13,14,54,7086,47751,50660],
+//         allowedParameters: ['sh-hwBoost', 'sh-hwTemp'],
 };
 
 export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
