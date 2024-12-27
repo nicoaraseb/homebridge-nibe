@@ -2,7 +2,6 @@ import {Data} from '../DataDomain';
 import {AccessoryDefinition, AccessoryInstance, ServiceResolver} from '../AccessoryDomain';
 import {Logger} from '../PlatformDomain';
 import {Locale} from '../util/Locale';
-import { Service, Characteristic } from 'homebridge';
 
 export class SimpleThermostatAccessory extends AccessoryDefinition {
 
@@ -49,7 +48,7 @@ export class SimpleThermostatAccessory extends AccessoryDefinition {
     this.updateCharacteristic(service, 'TargetTemperature', 22);
 
     // Listen for TargetTemperature changes
-    service.getCharacteristic(Characteristic.TargetTemperature)
+    service.getCharacteristic('TargetTemperature')
       .on('set', (value, callback) => {
         this.setTargetTemperature(value);
         callback(null);
