@@ -2,6 +2,7 @@ import {Data} from '../DataDomain';
 import {AccessoryDefinition, AccessoryInstance, ServiceResolver} from '../AccessoryDomain';
 import {Logger} from '../PlatformDomain';
 import {Locale} from '../util/Locale';
+import { Service, Characteristic } from 'homebridge';
 
 export class SimpleThermostatAccessory extends AccessoryDefinition {
 
@@ -29,10 +30,10 @@ export class SimpleThermostatAccessory extends AccessoryDefinition {
     const service = this.getOrCreateService('Thermostat', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
     if (service && parameter) {
-      if (parameter === '50660') {
+      if (this.parameterId === '50660') {
         this.updateCharacteristic(service, 'CurrentTemperature', parameter.value);
       }
-      if (parameter === '47751') {
+      if (this.parameterId === '47751') {
         this.updateCharacteristic(service, 'TargetTemperature', parameter.value);
       }
       super.update(platformAccessory, data);
