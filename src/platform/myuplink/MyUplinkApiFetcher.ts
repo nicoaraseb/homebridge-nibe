@@ -93,6 +93,7 @@ export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
   private async fetch(): Promise<void> {
     this.log.debug('Fetch data.');
     try {
+        this.log.debug('token: ' + this.getSession('access_token'));
       if (this.isTokenExpired()) {
         this.log.debug('Token is expired / expires soon - refreshing');
         const token = await this.getToken();
