@@ -26,7 +26,8 @@ const consts = {
   timeout: 45000,
   userAgent: 'homebridge-nibe',
   renewBeforeExpiry: 5 * 60 * 1000,
-  allowedParameters: [4,8,10,11,13,14,54,50660],
+//   allowedParameters: [4,8,10,11,13,14,54,50660],
+  allowedParameters: ['sh-hwBoost','sh-indoorSpHeat','sh-smartMode'],
 };
 
 export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
@@ -313,7 +314,6 @@ export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
   private isTokenExpired(): boolean {
     const expired = (Number(this.getSession('expires_at')) || 0) < Date.now() + consts.renewBeforeExpiry;
     this.log.debug('Is token expired: ' + expired);
-    this.log.debug('token:' + this.getSession('access_token'));
     return expired;
   }
 
