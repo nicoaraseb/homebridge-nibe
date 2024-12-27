@@ -28,8 +28,8 @@ export class HotWaterAccessory extends AccessoryDefinition {
   }
 
   isApplicable(data: Data): boolean {
-    const result1 = this.findParameter('12', data);
-    const result2 = this.findParameter('11', data);
+    const result1 = this.findParameter('11', data);
+    const result2 = this.findParameter('12', data);
     if (result1 && result2) {
       return true;
     }
@@ -86,9 +86,9 @@ export class HotWaterAccessory extends AccessoryDefinition {
 
   updateThermostat(platformAccessory: AccessoryInstance, data: Data) {
     const service = this.getOrCreateService('Thermostat', platformAccessory);
-    const pCurrentTemperature = this.findParameter('12', data);
+    const pCurrentTemperature = this.findParameter('11', data);
     const pHeatPompParam = this.findParameter('43437', data);
-    const pTemperatureParam = this.findParameter('11', data);
+    const pTemperatureParam = this.findParameter('12', data);
     const previousCurrentTemperature = this.getData(platformAccessory, 'previousCurrentTemperature');
     const isHeating = this.isHeating(pHeatPompParam, pTemperatureParam, pCurrentTemperature, previousCurrentTemperature);
     this.updateCharacteristic(service, 'CurrentHeatingCoolingState', isHeating ? 1 : 0, CURRENT_HEATING_STATE_PROPS);
