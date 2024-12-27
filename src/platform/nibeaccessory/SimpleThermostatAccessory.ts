@@ -56,16 +56,16 @@ export class SimpleThermostatAccessory extends AccessoryDefinition {
 
     this.update(platformAccessory, data);
   }
-
-  setTargetTemperature(value) {
-    this.platform.log(`Target temperature set to: ${value}`);
-    // Implement logic to send the new temperature to the NIBE system
-    this.sendToNibeSystem(value);
-  }
-
-  sendToNibeSystem(value) {
-    // Placeholder for sending the new target temperature to the NIBE system
-    this.platform.log(`Sending target temperature ${value} to the NIBE system.`);
-    // Add actual implementation here
-  }
+//
+//   setTargetTemperature(value) {
+//     this.platform.log(`Target temperature set to: ${value}`);
+//     // Implement logic to send the new temperature to the NIBE system
+//     this.sendToNibeSystem(value);
+//   }
+//
+//   sendToNibeSystem(value) {
+//     // Placeholder for sending the new target temperature to the NIBE system
+//     this.platform.log(`Sending target temperature ${value} to the NIBE system.`);
+//     // Add actual implementation here
+//   }
 }
