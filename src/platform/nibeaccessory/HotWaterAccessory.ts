@@ -10,8 +10,8 @@ import {Data} from '../DataDomain';
 
 const CURRENT_HEATING_STATE_PROPS = { 'maxValue': 1, 'minValue': 0, 'validValues': [0, 1] }; // off, heat
 const TARGET_HEATING_COOLING_STATE_PROPS = { 'perms': [ 'pr', 'ev' ], 'minValue': 3, 'maxValue': 3, 'validValues': [3] }; // auto
-const TARGET_TEMPERATURE_PROPS= { 'perms': [ 'pr', 'ev' ], 'maxValue': 70, 'minValue': 10 };
-const HEATING_THRESHOLD_TEMPERATURE_PROPS = { 'perms': [ 'pr', 'ev' ], 'maxValue': 70, 'minValue': 10 };
+const TARGET_TEMPERATURE_PROPS= { 'perms': [ 'pr', 'ev' ], 'maxValue': 70, 'minValue': 30 };
+const HEATING_THRESHOLD_TEMPERATURE_PROPS = { 'perms': [ 'pr', 'ev' ], 'maxValue': 70, 'minValue': 30 };
 const RO_PROPS = { 'perms': [ 'pr', 'ev' ] };
 
 export class HotWaterAccessory extends AccessoryDefinition {
@@ -86,9 +86,9 @@ export class HotWaterAccessory extends AccessoryDefinition {
 
   updateThermostat(platformAccessory: AccessoryInstance, data: Data) {
     const service = this.getOrCreateService('Thermostat', platformAccessory);
-    const pCurrentTemperature = this.findParameter('11', data);
-    const pHeatPompParam = this.findParameter('43437', data);
-    const pTemperatureParam = this.findParameter('12', data);
+    const pCurrentTemperature = this.findParameter('12', data);
+    const pHeatPompParam = this.findParameter('7086', data);
+    const pTemperatureParam = this.findParameter('11', data);
     const previousCurrentTemperature = this.getData(platformAccessory, 'previousCurrentTemperature');
     const isHeating = this.isHeating(pHeatPompParam, pTemperatureParam, pCurrentTemperature, previousCurrentTemperature);
     this.updateCharacteristic(service, 'CurrentHeatingCoolingState', isHeating ? 1 : 0, CURRENT_HEATING_STATE_PROPS);
