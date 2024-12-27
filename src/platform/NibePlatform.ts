@@ -70,7 +70,7 @@ export class NibePlatform implements DynamicPlatformPlugin {
 //         async (deviceId: string, paramId: string, value: any) => {
 //           return await this.dataFetcher.setValue(deviceId, paramId, value);
 //         },
-      ),
+//       ),
     ];
 
 
