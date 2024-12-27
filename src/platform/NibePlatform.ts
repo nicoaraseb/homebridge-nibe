@@ -51,20 +51,26 @@ export class NibePlatform implements DynamicPlatformPlugin {
     }, log);
 
     this.accessoryDefinitions = [
-      new TemperatureSensorAccessory('40067', 'average-outdoor-temperature-40067', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40004', 'outdoor-temperature-40004', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('44362', 'outdoor-temperature-44362', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40025', 'ventilation-exhaust-air-40025', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40026', 'ventilation-extract-air-40026', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40075', 'ventilation-supply-air-40075', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40183', 'ventilation-outdoor-40183', 1, this.locale, this.serviceResolver, this.log),
-      new TemperatureSensorAccessory('40013', 'hot-water-top-40013', 1, this.locale, this.serviceResolver, this.log),
-      new HotWaterAccessory('hot-water', 3, this.locale, this.serviceResolver, this.log,
-        async (deviceId: string, paramId: string, value: any) => {
-          return await this.dataFetcher.setValue(deviceId, paramId, value);
-        },
+        new TemperatureSensorAccessory('4', 'outdoor-temperature-4', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('8', 'heat-supply-temp-8', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('10', 'heat-return-temp-10', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('13', 'brine-in-13', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('14', 'brine-out-14', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('54', 'average-outdoor-temperature-54', 1, this.locale, this.serviceResolver, this.log),
+        new TemperatureSensorAccessory('50660', 'interior-temperature-50660', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40067', 'average-outdoor-temperature-40067', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40004', 'outdoor-temperature-40004', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('44362', 'outdoor-temperature-44362', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40025', 'ventilation-exhaust-air-40025', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40026', 'ventilation-extract-air-40026', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40075', 'ventilation-supply-air-40075', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40183', 'ventilation-outdoor-40183', 1, this.locale, this.serviceResolver, this.log),
+//       new TemperatureSensorAccessory('40013', 'hot-water-top-40013', 1, this.locale, this.serviceResolver, this.log),
+//       new HotWaterAccessory('hot-water', 3, this.locale, this.serviceResolver, this.log,
+//         async (deviceId: string, paramId: string, value: any) => {
+//           return await this.dataFetcher.setValue(deviceId, paramId, value);
+//         },
       ),
-      new NewFirmwareAccessory('new-firmware', 1, this.locale, this.serviceResolver, this.log),
     ];
 
 
