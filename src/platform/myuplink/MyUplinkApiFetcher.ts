@@ -234,7 +234,7 @@ export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
         },
         params,
       });
-
+    this.log.debug('token:' + this.getSession('access_token');
       if(this.options.showApiResponse) {
         this.log.info('Nibe data from '+url+': ' +JSON.stringify(data));
       }
