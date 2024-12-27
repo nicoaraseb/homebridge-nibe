@@ -47,12 +47,12 @@ export class SimpleThermostatAccessory extends AccessoryDefinition {
     this.updateCharacteristic(service, 'Name', this.getText(this.name));
     this.updateCharacteristic(service, 'TargetTemperature', 22);
 
-    // Listen for TargetTemperature changes
-    service.getCharacteristic('TargetTemperature')
-      .on('set', (value, callback) => {
-        this.setTargetTemperature(value);
-        callback(null);
-      });
+//     // Listen for TargetTemperature changes
+//     service.getCharacteristic('TargetTemperature')
+//       .on('set', (value, callback) => {
+//         this.setTargetTemperature(value);
+//         callback(null);
+//       });
 
     this.update(platformAccessory, data);
   }
