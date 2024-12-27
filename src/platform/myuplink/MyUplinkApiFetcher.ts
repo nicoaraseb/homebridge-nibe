@@ -26,8 +26,17 @@ const consts = {
   timeout: 45000,
   userAgent: 'homebridge-nibe',
   renewBeforeExpiry: 5 * 60 * 1000,
-//   allowedParameters: [4,8,10,11,13,14,54,50660],
-  allowedParameters: ['sh-hwBoost','sh-indoorSpHeat','sh-smartMode'],
+//   temp afara : 4
+//   tur incalzire : 8
+//   retur incalzire : 10
+//   temp apa calda : 11
+//   foraj intrare : 13
+//   foraj iesire : 14
+//   temp medie afara : 54
+//   temp interior : BT50 : 50660
+//   more hot water : 7086
+//   target interior temp : 47751
+  allowedParameters: [4,8,10,11,13,14,54,7086,47751,50660],
 };
 
 export class MyUplinkApiFetcher extends EventEmitter implements DataFetcher {
