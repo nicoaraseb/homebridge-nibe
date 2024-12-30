@@ -13,4 +13,6 @@ class PowerConsumptionCharacteristic extends Characteristic {
     });
     this.value = 0; // Default value
   }
+
+  export { PowerConsumptionCharacteristic };
 }

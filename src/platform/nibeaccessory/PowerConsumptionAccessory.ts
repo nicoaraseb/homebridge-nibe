@@ -1,4 +1,4 @@
-import { Characteristic, CharacteristicProps, Service, UUIDGen } from 'hap-nodejs';
+import { Characteristic, CharacteristicProps, Service } from 'hap-nodejs';
 import {Data} from '../DataDomain';
 import {AccessoryDefinition, AccessoryInstance, ServiceResolver} from '../AccessoryDomain';
 import {Logger} from '../PlatformDomain';
