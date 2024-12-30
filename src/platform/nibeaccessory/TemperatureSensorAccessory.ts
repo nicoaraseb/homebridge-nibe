@@ -30,7 +30,7 @@ export class TemperatureSensorAccessory extends AccessoryDefinition {
     const parameter = this.findParameter(this.parameterId, data);
     if (service && parameter) {
       this.updateCharacteristic(service, 'CurrentTemperature', parameter.value);
-      this.updateCharacteristic(service, 'Name', parameter.value.toString();
+      this.updateCharacteristic(service, 'Name', parameter.value.toString());
       super.update(platformAccessory, data);
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${parameter.value}`);
     }
