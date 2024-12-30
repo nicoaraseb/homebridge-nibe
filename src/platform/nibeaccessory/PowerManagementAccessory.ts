@@ -2,6 +2,7 @@ import { Data } from '../DataDomain';
 import { AccessoryDefinition, AccessoryInstance, ServiceResolver } from '../AccessoryDomain';
 import { Logger } from '../PlatformDomain';
 import { Locale } from '../util/Locale';
+import { TotalConsumptionCharacteristic } from '../customcharacteristics/TotalConsumptionCharacteristic';
 
 export class PowerManagementAccessory extends AccessoryDefinition {
 
@@ -30,10 +31,13 @@ export class PowerManagementAccessory extends AccessoryDefinition {
     const parameter = this.findParameter(this.parameterId, data);
 
     if (service && parameter) {
-      // Update the accessory's display name or other characteristic
-      this.updateCharacteristic(service, 'TotalConsumption', this.getText(String(parameter.value)));
+      const totalCons = service.getCharacteristic(TotalConsumptionCharacteristic);
+      if (totalCons) {
+        totalCons.updateValue(parameter.value); // Update the custom characteristic value
+      }
+
       super.update(platformAccessory, data);
-      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated with text: ${parameter.value}`);
+      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated with value: ${parameter.value}`);
     }
   }
 
@@ -41,7 +45,7 @@ export class PowerManagementAccessory extends AccessoryDefinition {
     super.create(platformAccessory, data);
 
     const service = this.getOrCreateService('PowerManagement', platformAccessory);
-
+    service.addCharacteristic(TotalConsumptionCharacteristic);
     this.updateCharacteristic(service, 'TotalConsumption', 0);
     this.update(platformAccessory, data);
   }
