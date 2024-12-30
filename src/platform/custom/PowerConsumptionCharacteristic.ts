@@ -1,9 +1,9 @@
-import { Characteristic, CharacteristicProps, Service, UUIDGen } from 'hap-nodejs';
+import { Characteristic, CharacteristicProps, Service } from 'hap-nodejs';
 
 // Create a custom characteristic for temperature (or any other data)
 class PowerConsumptionCharacteristic extends Characteristic {
   constructor() {
-    super('PowerConsumptionCharacteristic', UUIDGen.generate('PowerConsumptionCharacteristic'));
+    super('PowerConsumptionCharacteristic', '1dc7fa25-0a30-4796-9f2e-a897a80a95bd');
     this.setProps({
       format: Characteristic.Formats.FLOAT,
       unit: 'kWh', // You can also use 'Fahrenheit' or other units
