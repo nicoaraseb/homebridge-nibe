@@ -1,6 +1,7 @@
 import {Data} from './DataDomain';
 import {Logger} from './PlatformDomain';
 import {Locale} from './util/Locale';
+import { PowerConsumptionCharacteristic } from './custom/PowerConsumptionCharacteristic';
 
 export interface AccessoryInstance {
   context: AccessoryContext
@@ -49,7 +50,7 @@ export type CharacteristicType =
   'OccupancyDetected' |
   'On' |
   'TargetTemperature' |
-  'PowerConsumptionCharacteristic'
+  PowerConsumptionCharacteristic
 
 export interface AccessoryContext {
   accessoryId: string
