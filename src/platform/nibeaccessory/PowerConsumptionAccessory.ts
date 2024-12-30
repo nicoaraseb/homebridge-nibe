@@ -27,9 +27,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
   }
 
   update(platformAccessory: AccessoryInstance, data: Data) {
-            const service =
-                platformAccessory.getService(Service.LightSensor) ||
-                platformAccessory.addService(Service.LightSensor, 'Power Sensor');
+    const service = this.getOrCreateService('LightSensor', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
 
     if (service && parameter) {
@@ -49,9 +47,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
   create(platformAccessory: AccessoryInstance, data: Data): void {
     super.create(platformAccessory, data);
 
-                const service =
-                    platformAccessory.getService(Service.LightSensor) ||
-                    platformAccessory.addService(Service.LightSensor, 'Power Sensor');
+    const service = this.getOrCreateService('LightSensor', platformAccessory);
 
     const initialPowerConsumption = 0; // Replace with initial value (e.g., 0 kWh)
 
