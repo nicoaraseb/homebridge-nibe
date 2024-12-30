@@ -106,7 +106,9 @@ export class NibePlatform implements DynamicPlatformPlugin {
       const isApplicable = accessoryDefinition.isApplicable(data);
       const accessoryId = accessoryDefinition.buildIdentifier(data);
       const isDisabled = this.isDisabled(accessoryId);
-
+this.log.debug("accesory id : " + accessoryId);
+this.log.debug("is disabled : " + isDisabled);
+this.log.debug("is isApplicable id : " + isApplicable);
       if (isApplicable && !isDisabled) {
         const platformAccessory = this.accessories.find(a => a.context.accessoryId === accessoryId);
         if (platformAccessory) {

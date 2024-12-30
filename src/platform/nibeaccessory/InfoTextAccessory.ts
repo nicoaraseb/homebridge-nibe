@@ -42,7 +42,7 @@ export class InfoTextAccessory extends AccessoryDefinition {
 
     const service = this.getOrCreateService('AccessoryInformation', platformAccessory);
 
-    this.updateCharacteristic(service, 'Name', this.getText(this.name)); // Initial Name
+    this.updateCharacteristic(service, 'Name', this.getText(String(parameter.value)));
     this.update(platformAccessory, data); // Populate with initial data
   }
 }
