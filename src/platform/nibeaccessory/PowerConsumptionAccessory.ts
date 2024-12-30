@@ -1,9 +1,9 @@
-import { Characteristic, CharacteristicProps, Service } from 'hap-nodejs';
-import {Data} from '../DataDomain';
-import {AccessoryDefinition, AccessoryInstance, ServiceResolver} from '../AccessoryDomain';
-import {Logger} from '../PlatformDomain';
-import {Locale} from '../util/Locale';
-import {PowerConsumptionCharacteristic} from '../custom/PowerConsumptionCharacteristic';
+import { Characteristic, Service } from 'hap-nodejs';
+import { Data } from '../DataDomain';
+import { AccessoryDefinition, AccessoryInstance, ServiceResolver } from '../AccessoryDomain';
+import { Logger } from '../PlatformDomain';
+import { Locale } from '../util/Locale';
+import { PowerConsumptionCharacteristic } from '../custom/PowerConsumptionCharacteristic';
 
 export class PowerConsumptionAccessory extends AccessoryDefinition {
   constructor(
@@ -17,36 +17,36 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
     super(name, version, locale, serviceResolver, log);
   }
 
-    isApplicable(data: Data) {
-      const result = this.findParameter(this.parameterId, data);
-      if (result) {
-        return true;
-      }
-      this.log.debug(`Conditions not meet for accessory: [${this.buildIdentifier(data)}]`);
-      return false;
+  isApplicable(data: Data) {
+    const result = this.findParameter(this.parameterId, data);
+    if (result) {
+      return true;
     }
+    this.log.debug(`Conditions not met for accessory: [${this.buildIdentifier(data)}]`);
+    return false;
+  }
 
   update(platformAccessory: AccessoryInstance, data: Data) {
     const service = this.getOrCreateService('Sensor', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
 
     if (service && parameter) {
-      // Use your own logic to assign a temperature value
-      const temperature = parameter.value;
-
-      // Create or update your custom characteristic
-      let customTempCharacteristic = service.getOptionalCharacteristics(PowerConsumptionCharacteristic);
+      // Get or add the custom characteristic
+      let customTempCharacteristic = service.getCharacteristic(PowerConsumptionCharacteristic);
       if (!customTempCharacteristic) {
-        customTempCharacteristic = service.addOptionalCharacteristic(new PowerConsumptionCharacteristic());
+        customTempCharacteristic = service.addOptionalCharacteristic(PowerConsumptionCharacteristic);
       }
 
+      // Use your own logic to assign a value (in this case, power consumption)
+      const powerConsumption = parameter.value;
+
       // Update the value of your custom characteristic
-      customTempCharacteristic.updateValue(temperature);
+      customTempCharacteristic.updateValue(powerConsumption);
 
       this.updateCharacteristic(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
-      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${temperature}`);
+      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${powerConsumption}`);
     }
   }
 
@@ -55,15 +55,15 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
 
     const service = this.getOrCreateService('Sensor', platformAccessory);
 
-    const initialTemperature = 0; // Replace with initial value
+    const initialPowerConsumption = 0; // Replace with initial value (e.g., 0 kWh)
 
     // Create or add your custom characteristic
-    let customTempCharacteristic = service.getOptionalCharacteristics(PowerConsumptionCharacteristic);
+    let customTempCharacteristic = service.getCharacteristic(PowerConsumptionCharacteristic);
     if (!customTempCharacteristic) {
-      customTempCharacteristic = service.addOptionalCharacteristic(new CustomTemperatureCharacteristic());
+      customTempCharacteristic = service.addOptionalCharacteristic(PowerConsumptionCharacteristic);
     }
 
-    customTempCharacteristic.updateValue(initialTemperature);
+    customTempCharacteristic.updateValue(initialPowerConsumption);
     this.updateCharacteristic(service, 'Name', this.name);
   }
 }
