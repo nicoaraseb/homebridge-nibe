@@ -41,7 +41,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
       this.updateCharacteristic(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
-      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${powerConsumption}`);
+      this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${parameter.value}`);
     }
   }
 
