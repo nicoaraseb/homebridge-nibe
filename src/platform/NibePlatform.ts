@@ -60,7 +60,7 @@ export class NibePlatform implements DynamicPlatformPlugin {
         new TemperatureSensorAccessory('7086', 'more-hot-water-7086', 1, this.locale, this.serviceResolver, this.log),
         new TemperatureSensorAccessory('47751', 'target-interior-temp-47751', 1, this.locale, this.serviceResolver, this.log),
         new TemperatureSensorAccessory('50660', 'interior-temperature-50660', 1, this.locale, this.serviceResolver, this.log),
-        new TemperatureSensorAccessory('6527', 'power-consumption-6527', 1, this.locale, this.serviceResolver, this.log),
+        new PowerConsumptionAccessory('6527', 'power-consumption-6527', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('40067', 'average-outdoor-temperature-40067', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('40004', 'outdoor-temperature-40004', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('44362', 'outdoor-temperature-44362', 1, this.locale, this.serviceResolver, this.log),
@@ -106,9 +106,6 @@ export class NibePlatform implements DynamicPlatformPlugin {
       const isApplicable = accessoryDefinition.isApplicable(data);
       const accessoryId = accessoryDefinition.buildIdentifier(data);
       const isDisabled = this.isDisabled(accessoryId);
-this.log.debug("accesory id : " + accessoryId);
-this.log.debug("is disabled : " + isDisabled);
-this.log.debug("is isApplicable id : " + isApplicable);
       if (isApplicable && !isDisabled) {
         const platformAccessory = this.accessories.find(a => a.context.accessoryId === accessoryId);
         if (platformAccessory) {
