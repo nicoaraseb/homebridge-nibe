@@ -2,10 +2,11 @@ import { Characteristic, CharacteristicProps, Service } from 'hap-nodejs';
 
 // Create a custom characteristic for Power Consumption (or any other data)
 class PowerConsumptionCharacteristic extends Characteristic {
+    static readonly UUID = '1dc7fa25-0a30-4796-9f2e-a897a80a95bd';
   constructor() {
     super(
       'PowerConsumptionCharacteristic',
-      '1dc7fa25-0a30-4796-9f2e-a897a80a95bd', // Unique UUID
+      PowerConsumptionCharacteristic.UUID, // Unique UUID
       {
         format: Characteristic.Formats.FLOAT,   // Data format (FLOAT)
         unit: 'kWh',                           // Unit of measure (kWh)
