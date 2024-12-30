@@ -43,7 +43,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
       // Update the value of your custom characteristic
       customTempCharacteristic.updateValue(temperature);
 
-      this.updateOptionalCharacteristics(service, 'Name', this.name);
+      this.updateCharacteristic(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${temperature}`);
@@ -64,6 +64,6 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
     }
 
     customTempCharacteristic.updateValue(initialTemperature);
-    this.updateOptionalCharacteristics(service, 'Name', this.name);
+    this.updateCharacteristic(service, 'Name', this.name);
   }
 }
