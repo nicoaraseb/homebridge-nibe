@@ -13,7 +13,7 @@ import {
 import {TemperatureSensorAccessory} from './nibeaccessory/TemperatureSensorAccessory';
 import {HotWaterAccessory} from './nibeaccessory/HotWaterAccessory';
 import {NewFirmwareAccessory} from './nibeaccessory/NewFirmwareAccessory';
-import {InfoTextAccessory} from './nibeaccessory/InfoTextAccessory';
+import {PowerManagementAccessory} from './nibeaccessory/PowerManagementAccessory';
 
 export const PLATFORM_NAME = 'Nibe';
 export const PLUGIN_NAME = 'homebridge-nibe';
@@ -61,7 +61,7 @@ export class NibePlatform implements DynamicPlatformPlugin {
         new TemperatureSensorAccessory('7086', 'more-hot-water-7086', 1, this.locale, this.serviceResolver, this.log),
         new TemperatureSensorAccessory('47751', 'target-interior-temp-47751', 1, this.locale, this.serviceResolver, this.log),
         new TemperatureSensorAccessory('50660', 'interior-temperature-50660', 1, this.locale, this.serviceResolver, this.log),
-        new InfoTextAccessory('6527', 'kwh-6527', 1, this.locale, this.serviceResolver, this.log),
+        new PowerManagementAccessory('6527', 'power-consumption-6527', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('40067', 'average-outdoor-temperature-40067', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('40004', 'outdoor-temperature-40004', 1, this.locale, this.serviceResolver, this.log),
 //       new TemperatureSensorAccessory('44362', 'outdoor-temperature-44362', 1, this.locale, this.serviceResolver, this.log),

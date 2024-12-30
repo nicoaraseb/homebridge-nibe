@@ -3,7 +3,7 @@ import { AccessoryDefinition, AccessoryInstance, ServiceResolver } from '../Acce
 import { Logger } from '../PlatformDomain';
 import { Locale } from '../util/Locale';
 
-export class InfoTextAccessory extends AccessoryDefinition {
+export class PowerManagementAccessory extends AccessoryDefinition {
 
   constructor(
     private readonly parameterId: string,
@@ -26,12 +26,12 @@ export class InfoTextAccessory extends AccessoryDefinition {
   }
 
   update(platformAccessory: AccessoryInstance, data: Data) {
-    const service = this.getOrCreateService('AccessoryInformation', platformAccessory);
+    const service = this.getOrCreateService('PowerManagement', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
 
     if (service && parameter) {
       // Update the accessory's display name or other characteristic
-      this.updateCharacteristic(service, 'Name', this.getText(String(parameter.value)));
+      this.updateCharacteristic(service, 'TotalConsumption', this.getText(String(parameter.value)));
       super.update(platformAccessory, data);
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated with text: ${parameter.value}`);
     }
@@ -40,9 +40,9 @@ export class InfoTextAccessory extends AccessoryDefinition {
   create(platformAccessory: AccessoryInstance, data: Data): void {
     super.create(platformAccessory, data);
 
-    const service = this.getOrCreateService('AccessoryInformation', platformAccessory);
+    const service = this.getOrCreateService('PowerManagement', platformAccessory);
 
-    this.updateCharacteristic(service, 'Name', this.getText(this.name)); // Initial Name
-    this.update(platformAccessory, data); // Populate with initial data
+    this.updateCharacteristic(service, 'TotalConsumption', 0);
+    this.update(platformAccessory, data);
   }
 }
