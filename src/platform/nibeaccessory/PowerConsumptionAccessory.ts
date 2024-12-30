@@ -35,15 +35,15 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
       const temperature = parameter.value;
 
       // Create or update your custom characteristic
-      let customTempCharacteristic = service.getCharacteristic(PowerConsumptionCharacteristic);
+      let customTempCharacteristic = service.getOptionalCharacteristics(PowerConsumptionCharacteristic);
       if (!customTempCharacteristic) {
-        customTempCharacteristic = service.addCharacteristic(new PowerConsumptionCharacteristic());
+        customTempCharacteristic = service.addOptionalCharacteristic(new PowerConsumptionCharacteristic());
       }
 
       // Update the value of your custom characteristic
       customTempCharacteristic.updateValue(temperature);
 
-      this.updateCharacteristic(service, 'Name', this.name);
+      this.updateOptionalCharacteristics(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated to ${temperature}`);
@@ -58,12 +58,12 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
     const initialTemperature = 0; // Replace with initial value
 
     // Create or add your custom characteristic
-    let customTempCharacteristic = service.getCharacteristic(PowerConsumptionCharacteristic);
+    let customTempCharacteristic = service.getOptionalCharacteristics(PowerConsumptionCharacteristic);
     if (!customTempCharacteristic) {
-      customTempCharacteristic = service.addCharacteristic(new CustomTemperatureCharacteristic());
+      customTempCharacteristic = service.addOptionalCharacteristic(new CustomTemperatureCharacteristic());
     }
 
     customTempCharacteristic.updateValue(initialTemperature);
-    this.updateCharacteristic(service, 'Name', this.name);
+    this.updateOptionalCharacteristics(service, 'Name', this.name);
   }
 }
