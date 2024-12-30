@@ -11,7 +11,7 @@ export class TotalConsumptionCharacteristic extends Characteristic {
         unit: 'kWh', // Unit of measurement (e.g., kilowatt-hours)
         minValue: 0, // Minimum value
         maxValue: 2000000, // Maximum value (adjust based on expected range)
-        stepValue: 1, // Step value for increments
+        minStep: 1, // Step value for increments
         perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE], // Permissions (readable and writable)
       }
     );
