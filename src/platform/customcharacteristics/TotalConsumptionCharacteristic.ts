@@ -1,9 +1,9 @@
-import { Characteristic, CharacteristicProps, UUIDGen } from 'hap-nodejs';
+import { Characteristic, CharacteristicProps, UUID } from 'hap-nodejs';
 
 // Define a custom TransmitPower characteristic
 export class TotalConsumptionCharacteristic extends Characteristic {
   constructor() {
-    super('TotalConsumptionCharacteristic', UUIDGen.generate('TotalConsumptionCharacteristic')); // Unique UUID
+    super('TotalConsumptionCharacteristic', UUID.generate('TotalConsumptionCharacteristic')); // Unique UUID
     this.setProps({
       format: Characteristic.Formats.FLOAT,
       unit: 'kWh',
