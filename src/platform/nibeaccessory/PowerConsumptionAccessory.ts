@@ -17,6 +17,15 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
     super(name, version, locale, serviceResolver, log);
   }
 
+    isApplicable(data: Data) {
+      const result = this.findParameter(this.parameterId, data);
+      if (result) {
+        return true;
+      }
+      this.log.debug(`Conditions not meet for accessory: [${this.buildIdentifier(data)}]`);
+      return false;
+    }
+
   update(platformAccessory: AccessoryInstance, data: Data) {
     const service = this.getOrCreateService('Sensor', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
