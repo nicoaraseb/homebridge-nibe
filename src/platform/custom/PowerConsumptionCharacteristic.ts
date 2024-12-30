@@ -12,7 +12,7 @@ class PowerConsumptionCharacteristic extends Characteristic {
         unit: 'kWh',                           // Unit of measure (kWh)
         minValue: -100,                        // Example minimum value
         maxValue: 100000,                      // Example maximum value
-        perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY], // Permissions
+        perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY, Characteristic.Perms.WRITE], // Permissions
       }
     );
     this.value = 0; // Default value
