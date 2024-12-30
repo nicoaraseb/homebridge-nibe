@@ -31,7 +31,7 @@ export class InfoTextAccessory extends AccessoryDefinition {
 
     if (service && parameter) {
       // Update the accessory's display name or other characteristic
-      this.updateCharacteristic(service, 'Name', this.getText(parameter.value));
+      this.updateCharacteristic(service, 'Name', this.getText(String(parameter.value)));
       super.update(platformAccessory, data);
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated with text: ${parameter.value}`);
     }
