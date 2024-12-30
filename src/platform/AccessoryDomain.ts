@@ -49,7 +49,7 @@ export type CharacteristicType =
   'OccupancyDetected' |
   'On' |
   'TargetTemperature' |
-  'CurrentConsumption'
+  'PowerConsumptionCharacteristic'
 
 export interface AccessoryContext {
   accessoryId: string
