@@ -31,7 +31,7 @@ export class PowerManagementAccessory extends AccessoryDefinition {
     const parameter = this.findParameter(this.parameterId, data);
 
     if (service && parameter) {
-      const totalCons = service.getCharacteristic('TotalConsumption');
+      const totalCons = service.getCharacteristic('CurrentConsumption');
       if (totalCons) {
         totalCons.updateValue(parameter.value); // Update the custom characteristic value
       }
@@ -45,8 +45,7 @@ export class PowerManagementAccessory extends AccessoryDefinition {
     super.create(platformAccessory, data);
 
     const service = this.getOrCreateService('PowerManagement', platformAccessory);
-    service.addCharacteristic('TotalConsumption');
-    this.updateCharacteristic(service, 'TotalConsumption', 0);
+    this.updateCharacteristic(service, 'CurrentConsumption', 0);
     this.update(platformAccessory, data);
   }
 }
