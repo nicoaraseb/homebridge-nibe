@@ -32,12 +32,12 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
 
     if (service && parameter) {
       // Get or add the custom characteristic
-      let customTempCharacteristic = service.getCharacteristic(PowerConsumptionCharacteristic);
+      let customTempCharacteristic = service.getCharacteristic('PowerConsumptionCharacteristic');
       if (!customTempCharacteristic) {
-        customTempCharacteristic = service.addOptionalCharacteristic(PowerConsumptionCharacteristic);
+        customTempCharacteristic = service.addOptionalCharacteristic('PowerConsumptionCharacteristic');
       }
 
-      this.updateCharacteristic(service, PowerConsumptionCharacteristic, parameter.value);
+      this.updateCharacteristic(service, 'PowerConsumptionCharacteristic', parameter.value);
       this.updateCharacteristic(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
@@ -58,7 +58,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
       customTempCharacteristic = service.addOptionalCharacteristic(PowerConsumptionCharacteristic);
     }
 
-    customTempCharacteristic.setValue(initialPowerConsumption);
     this.updateCharacteristic(service, 'Name', this.name);
+    this.updateCharacteristic(service, 'PowerConsumptionCharacteristic', 0);
   }
 }
