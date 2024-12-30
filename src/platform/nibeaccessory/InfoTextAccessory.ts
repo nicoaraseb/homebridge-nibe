@@ -26,11 +26,12 @@ export class InfoTextAccessory extends AccessoryDefinition {
   }
 
   update(platformAccessory: AccessoryInstance, data: Data) {
-    const service = this.getOrCreateService('StatelessProgrammableSwitch', platformAccessory);
+    const service = this.getOrCreateService('AccessoryInformation', platformAccessory);
     const parameter = this.findParameter(this.parameterId, data);
+
     if (service && parameter) {
-      this.updateCharacteristic(service, 'ProgrammableSwitchEvent', parameter.value);
-      this.updateCharacteristic(service, 'Name', this.getText(this.name)); // Display name
+      // Update the accessory's display name or other characteristic
+      this.updateCharacteristic(service, 'Name', this.getText(parameter.value));
       super.update(platformAccessory, data);
       this.log.debug(`Accessory ${platformAccessory.context.accessoryId} updated with text: ${parameter.value}`);
     }
@@ -39,10 +40,9 @@ export class InfoTextAccessory extends AccessoryDefinition {
   create(platformAccessory: AccessoryInstance, data: Data): void {
     super.create(platformAccessory, data);
 
-    const service = this.getOrCreateService('StatelessProgrammableSwitch', platformAccessory);
-    this.updateCharacteristic(service, 'Name', this.getText(this.name)); // Initial Name
-    this.updateCharacteristic(service, 'ProgrammableSwitchEvent', 0); // Default value for HomeKit compliance
+    const service = this.getOrCreateService('AccessoryInformation', platformAccessory);
 
-    this.update(platformAccessory, data);
+    this.updateCharacteristic(service, 'Name', this.getText(this.name)); // Initial Name
+    this.update(platformAccessory, data); // Populate with initial data
   }
 }
