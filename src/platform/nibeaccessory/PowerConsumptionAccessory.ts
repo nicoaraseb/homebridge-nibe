@@ -37,12 +37,7 @@ export class PowerConsumptionAccessory extends AccessoryDefinition {
         customTempCharacteristic = service.addOptionalCharacteristic(PowerConsumptionCharacteristic);
       }
 
-      // Use your own logic to assign a value (in this case, power consumption)
-      const powerConsumption = parameter.value;
-
-      // Update the value of your custom characteristic using setValue
-      customTempCharacteristic.setValue(powerConsumption);
-
+      this.updateCharacteristic(service, PowerConsumptionCharacteristic, parameter.value);
       this.updateCharacteristic(service, 'Name', this.name);
       super.update(platformAccessory, data);
 
