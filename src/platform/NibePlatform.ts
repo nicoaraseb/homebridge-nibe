@@ -13,6 +13,7 @@ import {
 import {TemperatureSensorAccessory} from './nibeaccessory/TemperatureSensorAccessory';
 import {HotWaterAccessory} from './nibeaccessory/HotWaterAccessory';
 import {NewFirmwareAccessory} from './nibeaccessory/NewFirmwareAccessory';
+import {PowerConsumptionAccessory} from './nibeaccessory/PowerConsumptionAccessory';
 
 export const PLATFORM_NAME = 'Nibe';
 export const PLUGIN_NAME = 'homebridge-nibe';
