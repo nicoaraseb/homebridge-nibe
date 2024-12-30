@@ -3,7 +3,7 @@ import { Characteristic, CharacteristicProps, UUID } from 'hap-nodejs';
 // Define a custom TransmitPower characteristic
 export class TotalConsumptionCharacteristic extends Characteristic {
   constructor() {
-    super('TotalConsumptionCharacteristic', UUID.generate('TotalConsumptionCharacteristic')); // Unique UUID
+    super('TotalConsumptionCharacteristic', UUID.generate('TotalConsumptionCharacteristic'),; // Unique UUID
     this.setProps({
       format: Characteristic.Formats.FLOAT,
       unit: 'kWh',
@@ -11,7 +11,7 @@ export class TotalConsumptionCharacteristic extends Characteristic {
       maxValue: 2000000,
       stepValue: 0.1,
       perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE],
-    });
+    }));
     this.value = this.getDefaultValue();
   }
 
