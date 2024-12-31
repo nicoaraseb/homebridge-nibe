@@ -37,7 +37,7 @@ const consts = {
 //   more hot water : 7086
 //   target interior temp : 47751
 //   consumed energy: 6527
-  allowedParameters: [4,8,10,11,12,13,14,54,6527,7086,47751,50660],
+  allowedParameters: [4,8,10,11,12,13,14,54,7086,47751,50660],
 //         allowedParameters: ['sh-hwBoost', 'sh-hwTemp'],
 };
 
