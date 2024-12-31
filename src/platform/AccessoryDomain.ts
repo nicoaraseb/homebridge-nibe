@@ -32,7 +32,7 @@ export type ServiceType =
   'Thermostat' |
   'OccupancySensor' |
   'Switch' |
-  'Sensor' | 
+  'Sensor' |
   'LightSensor'
 
 export type CharacteristicType =
